@@ -1,0 +1,23 @@
+schema: ../schema/**/*.gql
+documents:
+  - ./src/**/*.gql
+  - ./src/graphql/fragments/**/*.gql
+generates:
+  src/graphql/apollo/types.ts:
+    plugins:
+      - typescript
+    config:
+      enumsAsTypes: true
+  src/:
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: graphql/apollo/types.ts
+    plugins:
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true
+      enumsAsTypes: true
+# hooks:
+#   afterAllFileWrite:
+#     - prettier --write

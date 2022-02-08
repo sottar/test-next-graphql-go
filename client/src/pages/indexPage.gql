@@ -1,0 +1,5 @@
+query indexPage {
+  cars {
+    id
+  }
+}
